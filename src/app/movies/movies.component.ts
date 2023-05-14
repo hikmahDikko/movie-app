@@ -9,6 +9,7 @@ import { Movie } from '../models/movie';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
+  searchValue: string | null = null
 
   constructor(private moviesService: MoviesService) {}
 
