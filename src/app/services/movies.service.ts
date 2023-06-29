@@ -26,8 +26,8 @@ export class MoviesService {
   }
 
   searchMovies(page : number, searchValue? : string){
-    const uri = searchValue ? '/search/movie' : '/movie/popular';
-    return this.http.get<MovieDTO>(`${this.baseUrl}${uri}?page=${page}&query=${searchValue}&api_key=${this.apiKey}`).pipe(switchMap(response => {
+    const url = searchValue ? '/search/movie' : '/movie/popular';
+    return this.http.get<MovieDTO>(`${this.baseUrl}${url}?page=${page}&query=${searchValue}&api_key=${this.apiKey}`).pipe(switchMap(response => {
       return of(response.results)
     }))
   }
@@ -36,7 +36,7 @@ export class MoviesService {
     return this.http.get<MovieVideoDTO>(`${this.baseUrl}/movie/${id}/videos?api_key=${this.apiKey}`)
     .pipe(switchMap(response => {
       return of(response.results)
-    }))
+    }));
   }
 
   getMovieImages(id : string){
